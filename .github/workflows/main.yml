@@ -3,7 +3,7 @@ on: [push, workflow_dispatch]
 jobs:
   build:
     runs-on: windows-latest
-    timeout-minutes: 120  # Set the maximum runtime to 60 minutes
+    timeout-minutes: 120  # Set the maximum runtime o 60 minutes
 
     steps:
     - name: Download
