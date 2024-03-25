@@ -4,7 +4,6 @@ jobs:
   build:
     runs-on: windows-latest
     timeout-minutes: 120
-
     steps:
     - name: Enable TS
       run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0
