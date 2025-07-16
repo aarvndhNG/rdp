@@ -22,8 +22,15 @@ jobs:
         start ms-appinstaller:?source=https://aka.ms/get-winget
     - name: Update runner
       run: |
-        $wingetPath = (Get-AppxPackage -Name "Microsoft.DesktopAppInstaller").InstallLocation + "\winget.exe"
-        & $wingetPath upgrade --all --silent
+        for ($i = 0; $i -lt 10; $i++) {
+          try {
+            $wingetPath = (Get-AppxPackage -Name "Microsoft.DesktopAppInstaller").InstallLocation + "\winget.exe"
+            & $wingetPath upgrade --all --silent
+            break
+          } catch {
+            Start-Sleep -Seconds 5
+          }
+        }
     - name: Print Windows version
       run: |
         Get-ComputerInfo | select WindowsProductName, WindowsVersion
