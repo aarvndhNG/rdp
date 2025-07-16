@@ -20,6 +20,7 @@ jobs:
     - name: Install winget
       run: |
         start ms-appinstaller:?source=https://aka.ms/get-winget
+        $env:Path += ";C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe"
     - name: Update runner
       run: |
         winget upgrade --all --silent
