@@ -20,12 +20,10 @@ jobs:
     - name: Install winget
       run: |
         start ms-appinstaller:?source=https://aka.ms/get-winget
-    - name: List winget directory
-      run: |
-        ls "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe"
     - name: Update runner
       run: |
-        & "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe\winget.exe" upgrade --all --silent
+        $wingetPath = (Get-AppxPackage -Name "Microsoft.DesktopAppInstaller").InstallLocation + "\winget.exe"
+        & $wingetPath upgrade --all --silent
     - name: Print Windows version
       run: |
         Get-ComputerInfo | select WindowsProductName, WindowsVersion
