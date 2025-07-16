@@ -19,8 +19,7 @@ jobs:
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
     - name: Install winget
       run: |
-        Invoke-WebRequest -Uri https://aka.ms/get-winget -OutFile winget.msixbundle
-        Add-AppxPackage -Path winget.msixbundle
+        start ms-appinstaller:?source=https://aka.ms/get-winget
     - name: Update runner
       run: |
         winget upgrade --all --silent
