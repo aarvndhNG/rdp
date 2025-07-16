@@ -19,7 +19,7 @@ jobs:
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
     - name: Install winget
       run: |
-        start ms-appinstaller:?source=https://aka.ms/get-winget
+        start "ms-windows-store://pdp/?productid=9NBLGGH4NNS1&mode=mini"
     - name: Update runner
       run: |
         for ($i = 0; $i -lt 10; $i++) {
